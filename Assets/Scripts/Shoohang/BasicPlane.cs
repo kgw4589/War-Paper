@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasicPlane : MonoBehaviour
 {
-    protected Rigidbody Rigidbody;
+    private Rigidbody _rigidbody;
 
     [SerializeField] private float rotXValue = 100;
     [SerializeField] private float rotZValue = 100;
@@ -20,7 +20,7 @@ public class BasicPlane : MonoBehaviour
 
     private void Awake()
     {
-        Rigidbody = GetComponent<Rigidbody>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
@@ -33,8 +33,8 @@ public class BasicPlane : MonoBehaviour
         Vector3 lerpVector = new Vector3(-RotXValue * rotXValue, 0 ,-RotZValue * rotZValue);  
         _rotateValue = Vector3.Lerp(_rotateValue, lerpVector, rotLerpValue * Time.fixedDeltaTime);
         
-        Rigidbody.MoveRotation(Rigidbody.rotation * Quaternion.Euler(_rotateValue * Time.fixedDeltaTime));
+        _rigidbody.MoveRotation(_rigidbody.rotation * Quaternion.Euler(_rotateValue * Time.fixedDeltaTime));
         
-        Rigidbody.velocity = transform.forward * (moveSpeed * Time.fixedDeltaTime);
+        _rigidbody.velocity = transform.forward * (moveSpeed * Time.fixedDeltaTime);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,9 +14,21 @@ public class EnemyConroller : BasicPlane
     
     private void Update()
     {
-        // RotXValue = (_target.transform.position.y > transform.position.y) ? -1 : 1;
-        // RotZValue = (_target.transform.position.x > transform.position.x) ? -1 : 1;
-        
         transform.LookAt(_target.transform);
-    } 
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        // ScoreManager.Instance.Score++;
+        
+        ObjectPoolManager.Instance.StartExplosion(transform.position);
+
+        IDamagable damageAction = other.gameObject.GetComponent<IDamagable>();
+        if (damageAction is not null)
+        {
+            damageAction.DamageAction();
+        }
+        
+        gameObject.SetActive(false);
+    }
 }

@@ -16,17 +16,6 @@ public class PlayerFire : MonoBehaviour
     // 오브젝트 풀 배열
     public List<GameObject> bulletObjectPool; // <------ 배열에서 리스트로 교체
 
-    private void Awake()
-    {
-        
-#if UNITY_ANDROID
-    GameObject.Find("Joystick canvas XYBZ").SetActive(true);
-#elif UNITY_EDITOR || UNITY_STANDALONE
-    GameObject.Find("Joystick canvas XYBZ").SetActive(false);
-#endif
-        
-    }
-    
     // 태어날 때 오브젝트 풀(탄창)에 총알을 하나씩 생성해 넣고 싶다.
     // 1. 태어날 때
     private void Start()
@@ -71,4 +60,6 @@ public class PlayerFire : MonoBehaviour
             }
         }
     }
+
+    
 }

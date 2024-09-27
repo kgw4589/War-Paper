@@ -10,13 +10,18 @@ public class CameraController : MonoBehaviour
     private Rigidbody _targetRigidbody;
     
     private float _smoothTime = 0.75f;
+    
+    public GameObject bullet = null;
 
     private void Start()
     {
         _target = GameManager.Instance.player;
         _targetRigidbody = _target.GetComponent<Rigidbody>();
 
-        _camera = GetComponentInChildren<Camera>();
+        _camera = Camera.main;
+        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void FixedUpdate()
