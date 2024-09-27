@@ -8,6 +8,9 @@ public class PlayerController : BasicPlane, IDamagable
     private float _rotXAmount = 7.5f;
     private float _rotZAmount = 7.5f;
 
+    private float _currentFireTime = 0.0f;
+    private float _fireDelay = 1.0f;
+
     private void Update()
     {
         RotXValue = Input.GetAxis("Mouse Y") * _rotXAmount;
@@ -18,7 +21,14 @@ public class PlayerController : BasicPlane, IDamagable
 
     private void Fire()
     {
-        if (Input.GetButtonDown("Fire1"))
+        _currentFireTime += Time.deltaTime;
+
+        if (_currentFireTime < _fireDelay)
+        {
+            return;
+        }
+        
+        if (Input.GetButton("Fire1"))
         {
             GameObject bullet = ObjectPoolManager.Instance.GetBullet();
 
@@ -27,6 +37,8 @@ public class PlayerController : BasicPlane, IDamagable
                 bullet.transform.position = transform.position;
                 bullet.transform.rotation = transform.rotation;
             }
+
+            _currentFireTime = 0;
         }
     }
 
