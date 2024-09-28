@@ -453,3 +453,4 @@ MonoBehaviour:
   rotZValue: 100
   rotLerpValue: 4
   moveSpeed: 500
+  firePosition: {fileID: 0}

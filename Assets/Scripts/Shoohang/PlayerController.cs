@@ -11,7 +11,7 @@ public class PlayerController : BasicPlane, IDamagable
     private float _rotZAmount = 7.5f;
 
     private float _currentFireTime = 0.0f;
-    private float _fireDelay = 1.0f;
+    private float _fireDelay = 0.25f;
 
     private void Update()
     {
