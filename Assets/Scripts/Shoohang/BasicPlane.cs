@@ -11,7 +11,7 @@ public class BasicPlane : MonoBehaviour
     
     [SerializeField] private float rotLerpValue = 4;
     
-    [SerializeField] private float moveSpeed = 100;
+    [SerializeField] protected float moveSpeed = 100;
     
     protected float RotXValue = 0;
     protected float RotZValue = 0;

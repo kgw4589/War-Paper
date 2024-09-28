@@ -6,8 +6,8 @@ public class EnemySpawner : MonoBehaviour
 {
     private Transform[] _spawnPoints;
     
-    private float _spawnMinTime = 0.5f;
-    private float _spawnMaxTime = 1.5f;
+    private float _spawnMinTime = 5f;
+    private float _spawnMaxTime = 8f;
 
     private float _createTime = 0f;
     private float _currentTime = 0f;
@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
             int index = Random.Range(0, _spawnPoints.Length);
             enemy.transform.position = _spawnPoints[index].position;
 
-            _currentTime = Random.Range(_spawnMinTime, _spawnMaxTime);
+            _createTime = Random.Range(_spawnMinTime, _spawnMaxTime);
             _currentTime = 0;
         }
     }

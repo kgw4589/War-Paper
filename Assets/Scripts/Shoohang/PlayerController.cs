@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : BasicPlane, IDamagable
 {
     [SerializeField] private Transform firePosition;
-    
+
     private float _rotXAmount = 7.5f;
     private float _rotZAmount = 7.5f;
 
@@ -17,7 +17,7 @@ public class PlayerController : BasicPlane, IDamagable
     {
         RotXValue = Input.GetAxis("Mouse Y") * _rotXAmount;
         RotZValue = Input.GetAxis("Mouse X") * _rotZAmount;
-        
+
         Fire();
     }
 

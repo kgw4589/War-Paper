@@ -16,15 +16,21 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     private int _enemyPoolSize = 100;
     private List<GameObject> _enemyPool;
 
+    private GameObject _enemyBulletFactory;
+    private int _enemyBulletPoolSize = 100;
+    private List<GameObject> _enemyBulletPool;
+
     protected override void Init()
     {
-        _bulletFactory = Resources.Load<GameObject>("Bullet");
+        _bulletFactory = Resources.Load<GameObject>("Player Bullet");
         _enemyFactory = Resources.Load<GameObject>("Enemy");
         _explosionFactory = Resources.Load<GameObject>("Explosion");
+        _enemyBulletFactory = Resources.Load<GameObject>("Enemy Bullet");
         
         SetBulletPool();
         SetEnemyPool(); 
         SetExplosionPool();
+        SetEnemyBulletPool();
     }
 
     private void SetBulletPool()
@@ -65,6 +71,20 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
             _explosionPool.Add(enemy);
             
             enemy.SetActive(false);
+        }
+    }
+
+    private void SetEnemyBulletPool()
+    {
+        _enemyBulletPool = new List<GameObject>();
+        
+        for (int i = 0; i < _enemyBulletPoolSize; i++)
+        {
+            GameObject bullet = Instantiate(_enemyBulletFactory, transform);
+            
+            _enemyBulletPool.Add(bullet);
+            
+            bullet.SetActive(false);
         }
     }
     
@@ -122,6 +142,25 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
             explosion.SetActive(false);
         }
     }
+    
+    public GameObject GetEnemyBullet()
+    {
+        GameObject bullet = null;
+        
+        if (_enemyPool.Count > 0)
+        {
+            bullet = _enemyPool[0];
+            _enemyPool.Remove(bullet);
+        }
+        else
+        {
+            bullet = Instantiate(_enemyBulletFactory, transform);
+        }
+
+        bullet.SetActive(true);
+
+        return bullet;
+    }
 
     public void ReturnBullet(GameObject bullet)
     {
@@ -133,5 +172,11 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     {
         enemy.SetActive(false);
         _enemyPool.Add(enemy);
+    }
+    
+    public void ReturnEnemyBullet(GameObject bullet)
+    {
+        bullet.SetActive(false);
+        _enemyBulletPool.Add(bullet);
     }
 }
