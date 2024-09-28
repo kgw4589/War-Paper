@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    
+    
     // 필요 속서 : 이동 속도
     public float speed = 5f;
     

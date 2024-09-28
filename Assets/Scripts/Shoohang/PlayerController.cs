@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerController : BasicPlane, IDamagable
 {
+    [SerializeField] private Transform firePosition;
+    
     private float _rotXAmount = 7.5f;
     private float _rotZAmount = 7.5f;
 
@@ -32,11 +34,8 @@ public class PlayerController : BasicPlane, IDamagable
         {
             GameObject bullet = ObjectPoolManager.Instance.GetBullet();
 
-            if (bullet)
-            {
-                bullet.transform.position = transform.position;
-                bullet.transform.rotation = transform.rotation;
-            }
+            bullet.transform.position = firePosition.position;
+            bullet.transform.rotation = firePosition.rotation;
 
             _currentFireTime = 0;
         }

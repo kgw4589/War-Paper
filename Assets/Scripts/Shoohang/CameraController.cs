@@ -18,6 +18,8 @@ public class CameraController : MonoBehaviour
         _target = GameManager.Instance.player;
         _targetRigidbody = _target.GetComponent<Rigidbody>();
 
+        transform.position = _target.transform.position;
+        
         _camera = Camera.main;
         
         Cursor.visible = false;

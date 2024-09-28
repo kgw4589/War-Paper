@@ -12,12 +12,18 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     private int _explosionPoolSize = 100;
     private List<GameObject> _explosionPool;
 
+    private GameObject _enemyFactory;
+    private int _enemyPoolSize = 100;
+    private List<GameObject> _enemyPool;
+
     protected override void Init()
     {
         _bulletFactory = Resources.Load<GameObject>("Bullet");
+        _enemyFactory = Resources.Load<GameObject>("Enemy");
         _explosionFactory = Resources.Load<GameObject>("Explosion");
         
         SetBulletPool();
+        SetEnemyPool(); 
         SetExplosionPool();
     }
 
@@ -34,6 +40,19 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
             bullet.SetActive(false);
         }
     }
+    private void SetEnemyPool()
+    {
+        _enemyPool = new List<GameObject>();
+        
+        for (int i = 0; i < _enemyPoolSize; i++)
+        {
+            GameObject explosion = Instantiate(_enemyFactory, transform);
+            
+            _enemyPool.Add(explosion);
+            
+            explosion.SetActive(false);
+        }
+    }
     
     private void SetExplosionPool()
     {
@@ -41,26 +60,50 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         
         for (int i = 0; i < _explosionPoolSize; i++)
         {
-            GameObject explosion = Instantiate(_explosionFactory, transform);
+            GameObject enemy = Instantiate(_explosionFactory, transform);
             
-            _explosionPool.Add(explosion);
+            _explosionPool.Add(enemy);
             
-            explosion.SetActive(false);
+            enemy.SetActive(false);
         }
     }
-
+    
     public GameObject GetBullet()
     {
+        GameObject bullet = null;
+        
         if (_bulletPool.Count > 0)
         {
-            GameObject bullet = _bulletPool[0];
-            bullet.SetActive(true);
+            bullet = _bulletPool[0];
             _bulletPool.Remove(bullet);
-
-            return bullet;
+        }
+        else
+        {
+            bullet = Instantiate(_bulletFactory, transform);
         }
 
-        return null;
+        bullet.SetActive(true);
+
+        return bullet;
+    }
+    
+    public GameObject GetEnemy()
+    {
+        GameObject enemy = null;
+        
+        if (_enemyPool.Count > 0)
+        {
+            enemy = _enemyPool[0];
+            _enemyPool.Remove(enemy);
+        }
+        else
+        {
+            enemy = Instantiate(_enemyFactory, transform);
+        }
+
+        enemy.SetActive(true);
+        
+        return enemy;
     }
 
     public void StartExplosion(Vector3 position) => StartCoroutine(Explosion(position));
@@ -84,5 +127,11 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     {
         bullet.SetActive(false);
         _bulletPool.Add(bullet);
+    }
+
+    public void ReturnEnemy(GameObject enemy)
+    {
+        enemy.SetActive(false);
+        _enemyPool.Add(enemy);
     }
 }
