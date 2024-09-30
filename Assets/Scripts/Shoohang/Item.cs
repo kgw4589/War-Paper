@@ -1,0 +1,60 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
+
+public class Item : MonoBehaviour
+{
+    public enum ItemType
+    {
+        Attack = 0,
+        Speed = 1,
+        Ultimate = 2
+    }
+
+    private ItemType _itemType;
+
+    [SerializeField] private GameObject[] itemObject;
+
+    private PlayerController _playerController;
+
+    private void Start()
+    {
+        _playerController = GameManager.Instance.player.GetComponent<PlayerController>();
+    }
+
+    private void OnEnable()
+    {
+        int randomValue = Random.Range(0, 100);
+
+        switch (randomValue)
+        {
+            case < 49 :
+                _itemType = ItemType.Attack;
+                Debug.Log(_itemType);
+                break;
+            case < 98 :
+                _itemType = ItemType.Speed;
+                Debug.Log(_itemType);
+                break;
+            default :
+                _itemType = ItemType.Ultimate;
+                Debug.Log(_itemType);
+                break;
+        }
+
+        itemObject[(int)_itemType].SetActive(true);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            _playerController.GetItem(_itemType);
+        }
+        
+        ObjectPoolManager.Instance.ReturnItem(gameObject);
+    }
+}

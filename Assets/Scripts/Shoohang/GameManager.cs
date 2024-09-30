@@ -10,5 +10,4 @@ public class GameManager : Singleton<GameManager>
     {
         player = GameObject.FindWithTag("Player");
     }
-    
 }

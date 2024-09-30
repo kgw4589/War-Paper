@@ -1,0 +1,68 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class BasicEnemy : BasicPlane, IDamagable
+{
+    public enum EnemyType
+    {
+        Straight = 0,
+        Tracking = 1,
+        Fire = 2
+    }
+
+    public EnemyType myEnemyType;
+    
+    protected GameObject Target;
+
+    [SerializeField] private float shihanbooTime = 45f;
+    
+    private void OnEnable()
+    {
+        StartCoroutine(InitEnemy());
+        
+        
+    }
+    
+    private IEnumerator InitEnemy()
+    {
+        yield return new WaitUntil(() => GameManager.Instance.player is not null);
+        
+        Target = GameManager.Instance.player;
+        Debug.Log(Target);
+        transform.forward = Target.transform.position - transform.position;
+
+        StartCoroutine(Shihanboo());
+        EnableLogic();
+    }
+
+    protected abstract void EnableLogic();
+    
+    private IEnumerator Shihanboo()
+    {
+        yield return new WaitForSeconds(shihanbooTime);
+        
+        gameObject.SetActive(false);
+        ObjectPoolManager.Instance.ReturnEnemy((int)myEnemyType, gameObject);
+    }
+    
+    protected virtual void OnCollisionEnter(Collision other)
+    {
+        ObjectPoolManager.Instance.SpawnExplosion(transform.position);
+
+        IDamagable damageAction = other.gameObject.GetComponent<IDamagable>();
+        if (damageAction is not null)
+        {
+            damageAction.DamageAction();
+
+            if (Random.Range(0, 100) < 10)
+            {
+                ObjectPoolManager.Instance.SpawnItem(transform.position);
+            }
+        }
+        
+        ObjectPoolManager.Instance.ReturnEnemy((int)myEnemyType, gameObject);
+    }
+
+    public abstract void DamageAction();
+}
