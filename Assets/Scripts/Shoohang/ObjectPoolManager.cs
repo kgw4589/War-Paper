@@ -159,18 +159,18 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     public void SpawnExplosion(Vector3 position) => StartCoroutine(Explosion(position));
     private IEnumerator Explosion(Vector3 position)
     {
-        if (_explosionPool.Count > 0)
-        {
-            GameObject explosion = _explosionPool[0];
-            explosion.transform.position = position;
-            explosion.SetActive(true);
-            _explosionPool.Remove(explosion);
-            
-            yield return new WaitForSeconds(2.0f);
-            
-            _explosionPool.Add(explosion);
-            explosion.SetActive(false);
-        }
+        GameObject explosion = null;
+        
+        explosion = _explosionPool.Count > 0 ? _explosionPool[0] : Instantiate(_explosionFactory, transform);
+        
+        explosion.transform.position = position;
+        explosion.SetActive(true);
+        _explosionPool.Remove(explosion);
+        
+        yield return new WaitForSeconds(2.0f);
+        
+        _explosionPool.Add(explosion);
+        explosion.SetActive(false);
     }
     
     public GameObject GetEnemyBullet()

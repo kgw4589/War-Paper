@@ -7,12 +7,7 @@ public class BulletForEnemy : BasicBullet
 {
     protected override void EnableLogic()
     {
-        GameManager.Instance.ultimateAction += DamageAction;
-    }
-
-    private void OnDisable()
-    {
-        GameManager.Instance.ultimateAction -= DamageAction;
+        
     }
 
     public override void DamageAction()

@@ -22,8 +22,6 @@ public abstract class BasicEnemy : BasicPlane, IDamagable
     private void OnEnable()
     {
         StartCoroutine(InitEnemy());
-
-        GameManager.Instance.ultimateAction += DamageAction;
     }
     
     private IEnumerator InitEnemy()
@@ -55,7 +53,7 @@ public abstract class BasicEnemy : BasicPlane, IDamagable
         {
             damageAction.DamageAction();
 
-            if (Random.Range(0, 100) < 30)
+            if (Random.Range(0, 100) < 100)
             {
                 ObjectPoolManager.Instance.SpawnItem(transform.position);
             }

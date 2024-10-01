@@ -1,10 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : BasicPlane
 {
+    [SerializeField] private Text speedText;
+    [SerializeField] private Text ultimateText;
+    
     [SerializeField] private Transform[] firePositions;
 
     private float _rotXAmount = 10.0f;
@@ -23,6 +28,9 @@ public class PlayerController : BasicPlane
     {
         RotXValue = Input.GetAxis("Mouse Y") * _rotXAmount;
         RotZValue = Input.GetAxis("Mouse X") * _rotZAmount;
+
+        speedText.text = $"{moveSpeed} km/p";
+        ultimateText.text = $"궁극기 {(_isReadyUltimate ? "준비됨" : "준비 중")}";
 
         Fire();
     }
@@ -51,7 +59,7 @@ public class PlayerController : BasicPlane
             _currentFireTime = 0;
         }
 
-        if (_isReadyUltimate && Input.GetKeyDown(KeyCode.Q))
+        if (_isReadyUltimate && Input.GetButtonDown("Fire2"))
         {
             UseUltimate();
         }
@@ -99,11 +107,14 @@ public class PlayerController : BasicPlane
     
     private void UseUltimate()
     {
-        Debug.Log(12312);
-        
         _isReadyUltimate = false;
-        
-        GameManager.Instance.ultimateAction();
+
+        var damagables = FindObjectsOfType<MonoBehaviour>().OfType<IDamagable>();
+
+        foreach (var damagable in damagables)
+        {
+            damagable.DamageAction();
+        }
     }
     
     private void OnCollisionEnter(Collision other)
