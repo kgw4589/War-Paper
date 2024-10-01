@@ -6,8 +6,8 @@ public class EnemySpawner : MonoBehaviour
 {
     private Transform[] _spawnPoints;
     
-    private float _spawnMinTime = 0.5f;
-    private float _spawnMaxTime = 2f;
+    private float _spawnMinTime = 0.25f;
+    private float _spawnMaxTime = 1f;
 
     private float _createTime = 0f;
     private float _currentTime = 0f;

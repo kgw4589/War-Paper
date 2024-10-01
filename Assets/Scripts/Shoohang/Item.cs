@@ -16,7 +16,7 @@ public class Item : MonoBehaviour
 
     private ItemType _itemType;
 
-    [SerializeField] private GameObject[] itemObject;
+    [SerializeField] private GameObject[] itemObjects;
 
     private PlayerController _playerController;
 
@@ -31,11 +31,11 @@ public class Item : MonoBehaviour
 
         switch (randomValue)
         {
-            case < 49 :
+            case < 40 :
                 _itemType = ItemType.Attack;
                 Debug.Log(_itemType);
                 break;
-            case < 98 :
+            case < 80 :
                 _itemType = ItemType.Speed;
                 Debug.Log(_itemType);
                 break;
@@ -45,7 +45,15 @@ public class Item : MonoBehaviour
                 break;
         }
 
-        itemObject[(int)_itemType].SetActive(true);
+        itemObjects[(int)_itemType].SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        foreach (var item in itemObjects)
+        {
+            item.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

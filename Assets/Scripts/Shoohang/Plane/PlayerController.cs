@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : BasicPlane, IDamagable
+public class PlayerController : BasicPlane
 {
     [SerializeField] private Transform[] firePositions;
 
-    private float _rotXAmount = 7.5f;
+    private float _rotXAmount = 10.0f;
     private float _rotZAmount = 7.5f;
 
     private float _currentFireTime = 0.0f;
@@ -16,6 +16,8 @@ public class PlayerController : BasicPlane, IDamagable
     private int _attackLevel = 1;
     private int _speedLevel = 0;
     private float _speedUpValue => moveSpeed * 0.1f;
+
+    private bool _isReadyUltimate = true;
 
     private void Update()
     {
@@ -48,6 +50,11 @@ public class PlayerController : BasicPlane, IDamagable
 
             _currentFireTime = 0;
         }
+
+        if (_isReadyUltimate && Input.GetKeyDown(KeyCode.Q))
+        {
+            UseUltimate();
+        }
     }
 
     public void GetItem(Item.ItemType itemType)
@@ -63,6 +70,7 @@ public class PlayerController : BasicPlane, IDamagable
                 break;
             
             case Item.ItemType.Ultimate :
+                GetUltimateItem();
                 break;
         }
     }
@@ -86,11 +94,29 @@ public class PlayerController : BasicPlane, IDamagable
     
     private void GetUltimateItem()
     {
-        
+        _isReadyUltimate = true;
     }
-
-    public void DamageAction()
+    
+    private void UseUltimate()
     {
+        Debug.Log(12312);
+        
+        _isReadyUltimate = false;
+        
+        GameManager.Instance.ultimateAction();
+    }
+    
+    private void OnCollisionEnter(Collision other)
+    {
+        ObjectPoolManager.Instance.SpawnExplosion(transform.position);
+        
+        IDamagable damagable = other.gameObject.GetComponent<IDamagable>();
+
+        if (damagable is not null)
+        {
+            damagable.DamageAction();
+        }
+        
         gameObject.SetActive(false);
     }
 }

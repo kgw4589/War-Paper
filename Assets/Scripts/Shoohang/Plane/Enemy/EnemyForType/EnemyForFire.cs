@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyForFire : BasicEnemy
 {
-    private float _attackMinDelay = 2.0f;
-    private float _attackMaxDelay = 4.0f;
+    private float _attackMinDelay = 4.0f;
+    private float _attackMaxDelay = 8.0f;
     
     private float _attackDelay = 5f;
 
@@ -33,6 +33,8 @@ public class EnemyForFire : BasicEnemy
 
     public override void DamageAction()
     {
+        ObjectPoolManager.Instance.SpawnExplosion(transform.position);
         ++ScoreManager.Instance.Score;
+        ObjectPoolManager.Instance.ReturnEnemy((int)myEnemyType, gameObject);
     }
 }

@@ -40,6 +40,6 @@ public class CameraController : MonoBehaviour
         
         transform.rotation = Quaternion.Slerp(_target.transform.rotation, transform.rotation, _smoothTime);
         
-        _camera.fieldOfView = Mathf.Clamp(25 + (_targetRigidbody.velocity.magnitude * 0.25f), 40, 80);
+        _camera.fieldOfView = Mathf.Clamp(15 + (_targetRigidbody.velocity.magnitude * 0.25f), 40, 80);
     }
 }

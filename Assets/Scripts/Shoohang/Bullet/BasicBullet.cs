@@ -11,6 +11,8 @@ public abstract class BasicBullet : MonoBehaviour, IDamagable
     private void OnEnable()
     {
         StartCoroutine(Shihanboo());
+        
+        EnableLogic();
     }
 
     private void Update()
@@ -18,6 +20,8 @@ public abstract class BasicBullet : MonoBehaviour, IDamagable
         Move();
     }
 
+    protected abstract void EnableLogic();
+    
     protected virtual void Move()
     {
         transform.position += transform.forward * (speed * Time.deltaTime);

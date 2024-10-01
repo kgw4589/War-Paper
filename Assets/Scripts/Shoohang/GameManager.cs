@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,9 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public GameObject player;
-    
+
+    public Action ultimateAction;
+
     protected override void Init()
     {
         player = GameObject.FindWithTag("Player");

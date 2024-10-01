@@ -16,6 +16,8 @@ public class EnemyForTraking : BasicEnemy
 
     public override void DamageAction()
     {
+        ObjectPoolManager.Instance.SpawnExplosion(transform.position);
         ++ScoreManager.Instance.Score;
+        ObjectPoolManager.Instance.ReturnEnemy((int)myEnemyType, gameObject);
     }
 }

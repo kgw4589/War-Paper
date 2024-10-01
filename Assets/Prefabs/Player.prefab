@@ -789,7 +789,7 @@ MonoBehaviour:
   rotXValue: 25
   rotZValue: 25
   rotLerpValue: 2
-  moveSpeed: 3000
+  moveSpeed: 5000
   firePositions:
   - {fileID: 733453697809878004}
   - {fileID: 2357315357852910006}

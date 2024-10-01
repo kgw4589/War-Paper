@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public abstract class BasicEnemy : BasicPlane, IDamagable
 {
@@ -20,8 +22,8 @@ public abstract class BasicEnemy : BasicPlane, IDamagable
     private void OnEnable()
     {
         StartCoroutine(InitEnemy());
-        
-        
+
+        GameManager.Instance.ultimateAction += DamageAction;
     }
     
     private IEnumerator InitEnemy()
@@ -48,20 +50,21 @@ public abstract class BasicEnemy : BasicPlane, IDamagable
     
     protected virtual void OnCollisionEnter(Collision other)
     {
-        ObjectPoolManager.Instance.SpawnExplosion(transform.position);
-
         IDamagable damageAction = other.gameObject.GetComponent<IDamagable>();
         if (damageAction is not null)
         {
             damageAction.DamageAction();
 
-            if (Random.Range(0, 100) < 10)
+            if (Random.Range(0, 100) < 30)
             {
                 ObjectPoolManager.Instance.SpawnItem(transform.position);
             }
         }
-        
-        ObjectPoolManager.Instance.ReturnEnemy((int)myEnemyType, gameObject);
+    }
+
+    private void OnDisable()
+    {
+        // GameManager.Instance.ultimateAction -= DamageAction;
     }
 
     public abstract void DamageAction();

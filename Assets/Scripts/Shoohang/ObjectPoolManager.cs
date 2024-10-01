@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ObjectPoolManager : Singleton<ObjectPoolManager>
 {
-    public GameObject _bulletFactory;
+    private GameObject _bulletFactory;
     private int _bulletPoolSize = 1;
-    public List<GameObject> _bulletPool;
+    private List<GameObject> _bulletPool;
 
     private GameObject _explosionFactory;
     private int _explosionPoolSize = 10;
