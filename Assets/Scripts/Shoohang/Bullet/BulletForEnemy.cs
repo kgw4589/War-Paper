@@ -12,7 +12,6 @@ public class BulletForEnemy : BasicBullet
 
     public override void DamageAction()
     {
-        ObjectPoolManager.Instance.SpawnExplosion(transform.position);
         ObjectPoolManager.Instance.ReturnEnemyBullet(gameObject);
     }
 }

@@ -43,6 +43,8 @@ public abstract class BasicBullet : MonoBehaviour, IDamagable
         {
             damagable.DamageAction();
         }
+        
+        DamageAction();
     }
     
     public abstract void DamageAction();

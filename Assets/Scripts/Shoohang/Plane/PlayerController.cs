@@ -13,6 +13,8 @@ public class PlayerController : BasicPlane
     
     [SerializeField] private Transform[] firePositions;
 
+    [SerializeField] private AudioSource boosterAudioSource;
+
     private float _rotXAmount = 10.0f;
     private float _rotZAmount = 7.5f;
 
@@ -28,6 +30,7 @@ public class PlayerController : BasicPlane
     private float _maxBoostGage = 100.0f;
     private float _currentBoostGage;
     private float _boosterFuelValue = 50.0f;
+    private bool _isPlayingBoosterAudio = false;
 
     private float _defaultMoveSpeed;
     private float _boosterMaxMoveSpeed;
@@ -69,12 +72,20 @@ public class PlayerController : BasicPlane
     {
         if ((_currentBoostGage > 0) && (moveSpeed < _boosterMaxMoveSpeed) && Input.GetButton("Boost"))
         {
+            if (!_isPlayingBoosterAudio)
+            {
+                _isPlayingBoosterAudio = true;
+                boosterAudioSource.Play();
+            }
             moveSpeed = Mathf.Lerp(moveSpeed, _boosterMaxMoveSpeed, 2f * Time.deltaTime);
             _currentBoostGage -= (20.0f * Time.deltaTime);
+            boosterAudioSource.volume += Time.deltaTime;
         }
         else if (moveSpeed > _defaultMoveSpeed)
         {
+            _isPlayingBoosterAudio = false;
             moveSpeed = Mathf.Lerp(moveSpeed, _defaultMoveSpeed, 3f * Time.deltaTime);
+            boosterAudioSource.volume -= Time.deltaTime;
         }
     }
 

@@ -18,6 +18,8 @@ public abstract class BasicEnemy : BasicPlane, IDamagable
     protected GameObject Target;
 
     [SerializeField] private float shihanbooTime = 45f;
+
+    [SerializeField] protected int upScoreValue = 1;
     
     private void OnEnable()
     {
@@ -49,6 +51,7 @@ public abstract class BasicEnemy : BasicPlane, IDamagable
     protected virtual void OnCollisionEnter(Collision other)
     {
         IDamagable damageAction = other.gameObject.GetComponent<IDamagable>();
+
         if (damageAction is not null)
         {
             damageAction.DamageAction();
@@ -57,8 +60,13 @@ public abstract class BasicEnemy : BasicPlane, IDamagable
             {
                 ObjectPoolManager.Instance.SpawnItem(transform.position);
             }
+            
+            return;
         }
+
+        DamageAction();
+        ScoreManager.Instance.Score -= upScoreValue;
     }
-    
+
     public abstract void DamageAction();
 }
