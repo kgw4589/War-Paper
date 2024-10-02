@@ -790,6 +790,9 @@ MonoBehaviour:
   rotZValue: 25
   rotLerpValue: 2
   moveSpeed: 5000
+  speedText: {fileID: 0}
+  ultimateText: {fileID: 0}
+  boosterSlider: {fileID: 0}
   firePositions:
   - {fileID: 733453697809878004}
   - {fileID: 2357315357852910006}

@@ -11,7 +11,8 @@ public class Item : MonoBehaviour
     {
         Attack = 0,
         Speed = 1,
-        Ultimate = 2
+        Ultimate = 2,
+        BoosterFuel = 3
     }
 
     private ItemType _itemType;
@@ -31,20 +32,24 @@ public class Item : MonoBehaviour
 
         switch (randomValue)
         {
-            case < 40 :
+            case < 30 :
                 _itemType = ItemType.Attack;
-                Debug.Log(_itemType);
                 break;
-            case < 80 :
+            
+            case < 60 :
                 _itemType = ItemType.Speed;
-                Debug.Log(_itemType);
                 break;
-            default :
+            
+            case < 70 :
                 _itemType = ItemType.Ultimate;
-                Debug.Log(_itemType);
+                break;
+            
+            default :
+                _itemType = ItemType.BoosterFuel;
                 break;
         }
 
+        Debug.Log(_itemType);
         itemObjects[(int)_itemType].SetActive(true);
     }
 

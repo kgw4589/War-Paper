@@ -59,11 +59,6 @@ public abstract class BasicEnemy : BasicPlane, IDamagable
             }
         }
     }
-
-    private void OnDisable()
-    {
-        // GameManager.Instance.ultimateAction -= DamageAction;
-    }
-
+    
     public abstract void DamageAction();
 }
