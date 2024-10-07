@@ -49,7 +49,7 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         
         for (int i = 0; i < _bulletPoolSize; i++)
         {
-            GameObject bullet = Instantiate(_bulletFactory, GameManager.Instance.player.transform);
+            GameObject bullet = Instantiate(_bulletFactory, transform);
             
             _bulletPool.Add(bullet);
             
@@ -131,7 +131,7 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         }
         else
         {
-            bullet = Instantiate(_bulletFactory, GameManager.Instance.player.transform);
+            bullet = Instantiate(_bulletFactory, transform);
         }
 
         return bullet;

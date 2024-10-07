@@ -8,6 +8,13 @@ public abstract class BasicBullet : MonoBehaviour, IDamagable
     public float speed = 3000f;
     public float shihanbooTime = 5f;
 
+    private TrailRenderer _trailRenderer;
+
+    private void Awake()
+    {
+        _trailRenderer = GetComponent<TrailRenderer>();
+    }
+    
     private void OnEnable()
     {
         StartCoroutine(Shihanboo());
@@ -18,6 +25,11 @@ public abstract class BasicBullet : MonoBehaviour, IDamagable
     private void Update()
     {
         Move();
+    }
+
+    private void OnDisable()
+    {
+        _trailRenderer.Clear();
     }
 
     protected abstract void EnableLogic();

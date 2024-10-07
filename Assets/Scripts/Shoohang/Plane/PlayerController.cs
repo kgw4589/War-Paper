@@ -105,8 +105,8 @@ public class PlayerController : BasicPlane
                 GameObject bullet = ObjectPoolManager.Instance.GetBullet();
 
                 bullet.transform.position = firePositions[i].position;
-                bullet.transform.rotation = firePositions[i].rotation;
-                
+                bullet.transform.forward = firePositions[i].forward;
+
                 bullet.SetActive(true);
             }
 
