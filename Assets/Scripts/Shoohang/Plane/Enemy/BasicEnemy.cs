@@ -38,7 +38,10 @@ public abstract class BasicEnemy : BasicPlane, IDamagable
         EnableLogic();
     }
 
-    protected abstract void EnableLogic();
+    protected virtual void EnableLogic()
+    {
+        
+    }
     
     private IEnumerator Shihanboo()
     {
@@ -63,10 +66,22 @@ public abstract class BasicEnemy : BasicPlane, IDamagable
             
             return;
         }
-
-        DamageAction();
-        ScoreManager.Instance.Score -= upScoreValue;
+        
+        DieAction();
+    }
+    
+    public void DamageAction()
+    {
+        GameManager.Instance.ShakeCamera();
+        
+        ScoreManager.Instance.Score += upScoreValue;
+        
+        DieAction();
     }
 
-    public abstract void DamageAction();
+    protected virtual void DieAction()
+    {
+        ObjectPoolManager.Instance.SpawnExplosion(transform.position);
+        ObjectPoolManager.Instance.ReturnEnemy((int)myEnemyType, gameObject);
+    }
 }

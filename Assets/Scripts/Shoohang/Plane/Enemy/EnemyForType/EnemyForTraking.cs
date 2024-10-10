@@ -4,20 +4,8 @@ using UnityEngine;
 
 public class EnemyForTraking : BasicEnemy
 {
-    protected override void EnableLogic()
-    {
-        
-    }
-
     private void Update()
     {
         transform.LookAt(Target?.transform);
-    }
-
-    public override void DamageAction()
-    {
-        ScoreManager.Instance.Score += upScoreValue;
-        ObjectPoolManager.Instance.SpawnExplosion(transform.position);
-        ObjectPoolManager.Instance.ReturnEnemy((int)myEnemyType, gameObject);
     }
 }

@@ -21,20 +21,14 @@ public class EnemyForFire : BasicEnemy
     
     private IEnumerator BulletFire()
     {
-        yield return new WaitForSeconds(_attackDelay);
-        _attackDelay = Random.Range(_attackMinDelay, _attackMaxDelay);
+        while (gameObject.activeSelf)
+        {
+            yield return new WaitForSeconds(_attackDelay);
+            _attackDelay = Random.Range(_attackMinDelay, _attackMaxDelay);
         
-        GameObject bullet = ObjectPoolManager.Instance.GetEnemyBullet();
-        bullet.transform.position = transform.position;
-        bullet.transform.forward = transform.forward;
-        
-        StartCoroutine(BulletFire());
-    }
-
-    public override void DamageAction()
-    {
-        ScoreManager.Instance.Score += upScoreValue;
-        ObjectPoolManager.Instance.SpawnExplosion(transform.position);
-        ObjectPoolManager.Instance.ReturnEnemy((int)myEnemyType, gameObject);
+            GameObject bullet = ObjectPoolManager.Instance.GetEnemyBullet();
+            bullet.transform.position = transform.position;
+            bullet.transform.forward = transform.forward;
+        }
     }
 }

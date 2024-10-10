@@ -25,7 +25,7 @@ public class PlayerController : BasicPlane
     private int _speedLevel = 0;
     private float _speedUpValue;
 
-    private bool _isReadyUltimate = true;
+    private bool _isReadyUltimate = false;
 
     private float _maxBoostGage = 100.0f;
     private float _currentBoostGage;
@@ -116,7 +116,7 @@ public class PlayerController : BasicPlane
 
     private void Ultimate()
     {
-        if (_isReadyUltimate && Input.GetButtonDown("Fire2"))
+        if (_isReadyUltimate && Input.GetKeyDown(KeyCode.Z))
         {
             UseUltimate();
         }

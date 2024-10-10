@@ -6,13 +6,9 @@ public class EnemyForStraight : BasicEnemy
 {
     protected override void EnableLogic()
     {
+        Vector3 moveDirection = Target.transform.position - transform.position;
+        moveDirection = moveDirection.normalized;
         
-    }
-
-    public override void DamageAction()
-    {
-        ScoreManager.Instance.Score += upScoreValue;
-        ObjectPoolManager.Instance.SpawnExplosion(transform.position);
-        ObjectPoolManager.Instance.ReturnEnemy((int)myEnemyType, gameObject);
+        transform.forward = moveDirection;
     }
 }
