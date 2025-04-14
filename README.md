@@ -1,4 +1,5 @@
 # War Paper
+![Image](https://github.com/user-attachments/assets/f16fd3a4-a980-4f9b-9bf1-a0b8cdeda530)
 
 ## 개요
 War paper는 '워 썬더'를 벤치마킹한 1인용 비행 슈팅 게임입니다.   
