@@ -3,7 +3,7 @@
 ## 개요
 War paper는 
 
-** 참고자료 **
+**참고자료**
 - 플레이 영상(평가 제출용) : <https://youtu.be/Xk6Na248sew>
 - 원래 수업 내용 영상 : <https://youtu.be/I60KI4tuLOI>
 
