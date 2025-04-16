@@ -48,6 +48,7 @@ War paper는 '워 썬더'를 벤치마킹한 1인용 비행 슈팅 게임입니�
 
 **카메라**
 * V키를 눌러 카메라 시점을 변경할 수 있음(1인칭, 3인칭)
+* 요격 혹은 격추 시 카메라가 흔들림
 * 기체의 속도에 따라 Camera의 Field of View 수치를 조절하여 속도감을 나타냄   
 ![Image](https://github.com/user-attachments/assets/8f316c52-3ab3-4260-9aa2-63739a3327a3)
 
