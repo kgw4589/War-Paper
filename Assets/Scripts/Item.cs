@@ -15,7 +15,7 @@ public class Item : MonoBehaviour
         BoosterFuel = 3
     }
 
-    private ItemType _itemType;
+    public ItemType _itemType;
 
     [SerializeField] private GameObject[] itemObjects;
 
