@@ -44,10 +44,12 @@ War paper는 '워 썬더'를 벤치마킹한 1인용 비행 슈팅 게임입니�
 * 좌 Shift를 홀드하여 빠른 속도로 이동 가능.
 * 부스터 사용 시, 연료를 소모함.
 * 현재 연료는 화면 하단에 표시됨.
+![Image](https://github.com/user-attachments/assets/4cd67bae-8452-41d0-ae41-ce5be1d69568)
 
 **카메라**
 * V키를 눌러 카메라 시점을 변경할 수 있음(1인칭, 3인칭)
 * 기체의 속도에 따라 Camera의 Field of View 수치를 조절하여 속도감을 나타냄
+![Image](https://github.com/user-attachments/assets/8f316c52-3ab3-4260-9aa2-63739a3327a3)
 
 **기본 공격**   
 * 마우스 좌클릭으로 미사일을 발사할 수 있음. GetButton 방식.
