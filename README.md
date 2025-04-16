@@ -86,3 +86,39 @@ War paper는 '워 썬더'를 벤치마킹한 1인용 비행 슈팅 게임입니�
 ![Image](https://github.com/user-attachments/assets/426d724f-f577-442b-b101-e9231b2a25e7)
 
 ---
+
+## 라이선스
+본 프로젝트는 단순 학습의 **비상업적 용도**로 제작되었습니다.
+
+- 본 프로젝트의 코드는 MIT 라이선스 하에 제공됩니다.
+
+- 사용된 **비코드 에셋(모델, 이미지, 사운드 등)** 은 각각의 라이선스를 따릅니다.  
+
+### Sketchfab 에셋
+
+본 프로젝트는 다음과 같은 Sketchfab 모델을 사용하였습니다:
+
+| 모델명 | 라이선스 | 링크 | 원작자 |
+|:--|:--|:--|:--|
+| AH-64 Apache | CC Attribution | [링크](https://sketchfab.com/3d-models/ah-64-apache-df0993ee21e74a759cd0519f6fc51cf8) | [Aerofiles](https://sketchfab.com/aerofiles) |
+| Airplane Engine | CC Attribution | [링크](https://sketchfab.com/3d-models/airplane-engine-bb658020350e461aa8d915bc58cd6ef9) | [Polocho](https://sketchfab.com/polocho) |
+| Wii U Super Mario Cat Bullet Bill | CC Attribution | [링크](https://sketchfab.com/3d-models/wii-u-super-mario-3d-world-cat-bullet-bill-3669a43924164e859ae259ea60f14124) | [Jakub Kaczmarek](https://sketchfab.com/jakubkaczmarek) |
+| F-15C Pixy | CC Attribution | [링크](https://sketchfab.com/3d-models/f-15-c-pixy-b31c02e554f74ab68aa8610334c744c3) | [Junker](https://sketchfab.com/junker) |
+| Heatseeker Air-to-Air Missile | CC Attribution | [링크](https://sketchfab.com/3d-models/heatseeker-air-air-missile-e9c5bba6f3b34f73b22961a726667856) | [Miguel Gant](https://sketchfab.com/miguel-gant) |
+| Fuel Tank | CC Attribution-NonCommercial | [링크](https://sketchfab.com/3d-models/fuel-tank-04aa79ec53634c8faa5a10bd46912b9e) | [DavidF](https://sketchfab.com/davidf) |
+| Nuclear Bomb (Stylized Low Poly) | CC Attribution | [링크](https://sketchfab.com/3d-models/nuclear-bomb-stylized-lowpoly-c9eaffc0b9d743e68fe8332d4ff97f9e) | [Square](https://sketchfab.com/square) |
+| Plane Paper Rig | CC Attribution-NonCommercial | [링크](https://sketchfab.com/3d-models/plane-paper-rig-arnoldredshifrendrmnvray-ad9435c74da940049d630d16e02e3d13) | [Arnoldredshifrendrmnvray](https://sketchfab.com/arnoldredshifrendrmnvray) |
+| WWII Soviet Plane (With Interior) | CC Attribution | [링크](https://sketchfab.com/3d-models/wwii-soviet-plane-with-interior-5590f0f0525d437a88e0232e5f8dd393) | [Alan](https://sketchfab.com/alan) |
+
+> - **CC Attribution**: 원작자 표시 필수, 상업적 이용 가능  
+> - **CC Attribution-NonCommercial**: 원작자 표시 필수, **비상업적 용도에만 사용 가능**
+
+
+### 포함되지 않은 에셋
+- `Assets/08.AssetStore` 폴더 내 모든 콘텐츠는 저작권 문제로 GitHub에 포함하지 않았습니다.
+- 이 폴더는 Unity Asset Store에서 무료로 배포된 다음의 에셋을 포함하고 있습니다:
+  - **AurynSky - Free Island Collection**
+  - **True Explosions**
+  - **AurynSky - Stylized Environment Assets**
+
+> 위 에셋들은 Unity에서 정한 [Asset Store EULA](https://unity3d.com/legal/as_terms) 및 비재배포 조항에 따라 저장소에서 제외되었습니다. 단, 스크린샷 및 영상에는 등장할 수 있으며, 이는 Unity 측 라이선스에 위배되지 않습니다.
