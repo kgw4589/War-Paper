@@ -66,23 +66,23 @@ War paper는 '워 썬더'를 벤치마킹한 1인용 비행 슈팅 게임입니�
 **공격 강화(30%)**   
 * 기본 공격으로 발사하는 미사일의 수가 증가됨.
 * 1 > 3 > 5 > 7 순서로 강화.
-* 부채꼴 모양으로 발사.
-![Image](https://github.com/user-attachments/assets/8fd58b6e-ca88-44df-92b6-38b537063989)
+* 부채꼴 모양으로 발사.    
+![Image](https://github.com/user-attachments/assets/2f6ff1bc-22f3-4ede-bd6f-18481b4e7cdf)
 
 **이동 강화(30%)**
 * 기본 이동속도가 증가함.
 * 최대 3회 강화할 수 있음.
-* 강화 시, 초기 이동속도(5000km/h)의 10%(500km/h)가 증가함.    
-![Image](https://github.com/user-attachments/assets/4994b81a-ae53-47b3-8915-322fcc8d77a4)
+* 강화 시, 초기 이동속도(5000km/h)의 10%(500km/h)가 증가함.      
+![Image](https://github.com/user-attachments/assets/cf446051-628e-48d3-bcb2-b1bf5a8fc285)
 
 **연료**
 * 부스터 사용을 위한 연료를 획득할 수 있음.
-* 최대치의 반틈 획득(단, 초과분은 버림).
-![Image](https://github.com/user-attachments/assets/ff2dc5ef-0b0b-42be-abe1-629b7f691735)
+* 최대치의 반틈 획득(단, 초과분은 버림).    
+![Image](https://github.com/user-attachments/assets/89c49b82-c26f-4795-9652-947d2b08a2f3)
 
 **궁극기**
-* 궁극기가 준비됨.
-![Image](https://github.com/user-attachments/assets/b3951909-194f-40db-9050-1f7e3304bf53)
+* 궁극기가 준비됨.    
+![Image](https://github.com/user-attachments/assets/426d724f-f577-442b-b101-e9231b2a25e7)
 
 ---
 
